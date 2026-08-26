@@ -21,15 +21,11 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Onest', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: var(--text);
   background: var(--white);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-}
-
-@supports (font-variation-settings: normal) {
-  body { font-family: 'Inter var', system-ui, sans-serif; }
 }
 
 a { text-decoration: none; color: inherit; }
