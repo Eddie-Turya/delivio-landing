@@ -922,69 +922,6 @@
 .footer__bottom-links a { color: rgba(255,255,255,0.25); }
 .footer__bottom-links a:hover { color: rgba(255,255,255,0.5); }
 
-/* ─── Animations ─────────────────────────────────────────────────────────── */
-
-@keyframes hero-up {
-  from { opacity: 0; transform: translateY(22px); }
-  to   { opacity: 1; transform: none; }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  /* Hero: animate on page load with staggered delays */
-  .hero__eyebrow  { animation: hero-up 0.7s cubic-bezier(0.16,1,0.3,1) 0.08s both; }
-  .hero__title    { animation: hero-up 0.75s cubic-bezier(0.16,1,0.3,1) 0.2s both; }
-  .hero__sub      { animation: hero-up 0.7s cubic-bezier(0.16,1,0.3,1) 0.33s both; }
-  .hero__cta      { animation: hero-up 0.7s cubic-bezier(0.16,1,0.3,1) 0.44s both; }
-  .hero__networks { animation: hero-up 0.65s ease 0.58s both; }
-  .hero__visual   { animation: hero-up 0.85s cubic-bezier(0.16,1,0.3,1) 0.18s both; }
-
-  /* Scroll-triggered base states */
-  .anim-up {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1),
-                transform 0.65s cubic-bezier(0.16,1,0.3,1);
-  }
-  .anim-fade {
-    opacity: 0;
-    transition: opacity 0.75s ease;
-  }
-  .anim-left {
-    opacity: 0;
-    transform: translateX(-40px);
-    transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
-                transform 0.7s cubic-bezier(0.16,1,0.3,1);
-  }
-  .anim-right {
-    opacity: 0;
-    transform: translateX(40px);
-    transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
-                transform 0.7s cubic-bezier(0.16,1,0.3,1);
-  }
-
-  .anim-up.is-visible,
-  .anim-fade.is-visible,
-  .anim-left.is-visible,
-  .anim-right.is-visible {
-    opacity: 1;
-    transform: none;
-  }
-
-  /* Stagger: children animate when parent gets is-visible */
-  .anim-stagger > * {
-    opacity: 0;
-    transform: translateY(26px);
-    transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1),
-                transform 0.6s cubic-bezier(0.16,1,0.3,1);
-  }
-  .anim-stagger.is-visible > * { opacity: 1; transform: none; }
-  .anim-stagger.is-visible > *:nth-child(2) { transition-delay: 80ms; }
-  .anim-stagger.is-visible > *:nth-child(3) { transition-delay: 160ms; }
-  .anim-stagger.is-visible > *:nth-child(4) { transition-delay: 240ms; }
-  .anim-stagger.is-visible > *:nth-child(5) { transition-delay: 320ms; }
-  .anim-stagger.is-visible > *:nth-child(6) { transition-delay: 400ms; }
-}
-
 /* ─── Docs / Sandbox Pages ───────────────────────────────────────────────── */
 
 .docs-page { min-height: 100vh; background: var(--off-white); }
