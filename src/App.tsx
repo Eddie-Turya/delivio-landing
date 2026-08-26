@@ -282,12 +282,12 @@ function Features() {
   return (
     <section id="features" className="section section--alt">
       <div className="container">
-        <div className="section__head">
+        <div className="section__head" data-reveal>
           <p className="section__eyebrow">Features</p>
           <h2 className="section__title">Everything you need to get paid</h2>
           <p className="section__sub">Built for Tanzania from the ground up — no workarounds, no middlemen.</p>
         </div>
-        <div className="features-grid">
+        <div className="features-grid" data-stagger>
           {FEATURES.map(f => (
             <div key={f.title} className="feature-card">
               <div className={`feature-card__icon feature-card__icon--${f.color}`}>
@@ -340,12 +340,12 @@ function HowItWorks() {
   return (
     <section id="how-it-works" className="section">
       <div className="container">
-        <div className="section__head">
+        <div className="section__head" data-reveal>
           <p className="section__eyebrow">How it works</p>
           <h2 className="section__title">Payment in four steps</h2>
           <p className="section__sub">From API call to confirmed payment — the whole flow takes seconds.</p>
         </div>
-        <div className="steps">
+        <div className="steps" data-stagger>
           {STEPS.map((s) => (
             <div key={s.n} className="step">
               <div className="step__icon">
@@ -406,7 +406,7 @@ function Developers() {
     <section id="developers" className="section section--dark">
       <div className="container">
         <div className="dev__inner">
-          <div className="dev__copy">
+          <div className="dev__copy" data-reveal="left">
             <p className="section__eyebrow section__eyebrow--light">Developers</p>
             <h2 className="section__title section__title--light">Built for developers</h2>
             <p className="section__sub section__sub--light">
@@ -432,7 +432,7 @@ function Developers() {
             </a>
           </div>
 
-          <div className="code-block">
+          <div className="code-block" data-reveal="right">
             <div className="code-block__header">
               <span className="code-block__title">Create a payment</span>
               <button className="code-block__copy" onClick={copy}>
@@ -493,12 +493,12 @@ function Pricing() {
   return (
     <section id="pricing" className="section section--alt">
       <div className="container">
-        <div className="section__head">
+        <div className="section__head" data-reveal>
           <p className="section__eyebrow">Pricing</p>
           <h2 className="section__title">Simple, transparent pricing</h2>
           <p className="section__sub">Plans for every stage of growth. Pricing details coming soon.</p>
         </div>
-        <div className="pricing-grid">
+        <div className="pricing-grid" data-stagger>
           {PLANS.map(plan => (
             <div key={plan.name} className={`pricing-card ${plan.highlight ? 'pricing-card--highlight' : ''}`}>
               {plan.highlight && <div className="pricing-card__popular">Most popular</div>}
@@ -534,7 +534,7 @@ function CTA() {
   return (
     <section className="cta-section">
       <div className="container">
-        <div className="cta-inner">
+        <div className="cta-inner" data-reveal>
           <div className="cta-glow" />
           <h2 className="cta-title">Ready to accept mobile money?</h2>
           <p className="cta-sub">
@@ -940,6 +940,29 @@ function SandboxPage() {
 // ─── Home ────────────────────────────────────────────────────────────────────
 
 function Home() {
+  useEffect(() => {
+    document.documentElement.classList.add('js-ready')
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('revealed')
+            obs.unobserve(e.target)
+          }
+        })
+      },
+      { threshold: 0.07, rootMargin: '0px 0px -28px 0px' }
+    )
+
+    document.querySelectorAll('[data-reveal], [data-stagger]').forEach(el => obs.observe(el))
+
+    return () => {
+      obs.disconnect()
+      document.documentElement.classList.remove('js-ready')
+    }
+  }, [])
+
   return (
     <main>
       <Hero />
