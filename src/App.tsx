@@ -73,7 +73,7 @@ function Hero() {
           <span className="hero__title-accent">in seconds.</span>
         </h1>
         <p className="hero__sub">
-          Delivio Pay lets businesses collect payments via USSD push to any Tanzanian
+          Yalla Pay lets businesses collect payments via USSD push to any Tanzanian
           mobile wallet — no app, no card, no friction.
         </p>
         <div className="hero__cta">
@@ -324,7 +324,7 @@ const STEPS = [
     n: '03',
     icon: Bell,
     title: 'You get notified',
-    desc: 'Delivio Pay sends a signed webhook to your server the moment the payment is confirmed. Your balance updates instantly.',
+    desc: 'Yalla Pay sends a signed webhook to your server the moment the payment is confirmed. Your balance updates instantly.',
     detail: 'Real-time notification',
   },
   {
@@ -538,7 +538,7 @@ function CTA() {
           <div className="cta-glow" />
           <h2 className="cta-title">Ready to accept mobile money?</h2>
           <p className="cta-sub">
-            Join businesses across Tanzania collecting payments with Delivio Pay.
+            Join businesses across Tanzania collecting payments with Yalla Pay.
             Set up in minutes — no paperwork, no waiting.
           </p>
           <div className="cta-actions">
@@ -683,7 +683,7 @@ function DocsPage() {
             <span className="badge badge--green"><span className="badge__dot" />API Reference</span>
             <h1 className="docs-hero__title">Documentation</h1>
             <p className="docs-hero__sub">
-              Everything you need to integrate Delivio Pay into your application.
+              Everything you need to integrate Yalla Pay into your application.
               Bearer token auth, JSON in, JSON out.
             </p>
           </div>
@@ -762,7 +762,7 @@ function DocsPage() {
         <section className="docs-section">
           <h2 className="docs-section__title">Webhooks</h2>
           <p className="docs-section__lead">
-            Delivio Pay sends a <code className="inline-code">POST</code> to your <code className="inline-code">callback_url</code> when a payment
+            Yalla Pay sends a <code className="inline-code">POST</code> to your <code className="inline-code">callback_url</code> when a payment
             status changes. Respond with HTTP 200 to acknowledge.
           </p>
           <div className="docs-codeblock">
