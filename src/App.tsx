@@ -73,7 +73,7 @@ function Hero() {
           <span className="hero__title-accent">in seconds.</span>
         </h1>
         <p className="hero__sub">
-          Yalla Pay lets businesses collect payments via USSD push to any Tanzanian
+          Wisopay lets businesses collect payments via USSD push to any Tanzanian
           mobile wallet — no app, no card, no friction.
         </p>
         <div className="hero__cta">
@@ -113,7 +113,7 @@ type Token = { text: string; cls: string }
 
 const LINES: Token[][] = [
   [{ text: 'const', cls: 'kw' }, { text: ' res ', cls: 'plain' }, { text: '=', cls: 'op' }, { text: ' await ', cls: 'kw' }, { text: 'fetch', cls: 'fn' }, { text: '(', cls: 'plain' }],
-  [{ text: "  'https://pay.deliviosend.com/v1/payments'", cls: 'str' }, { text: ',', cls: 'plain' }],
+  [{ text: "  'https://pay.wisopay.com/v1/payments'", cls: 'str' }, { text: ',', cls: 'plain' }],
   [{ text: '  {', cls: 'plain' }],
   [{ text: '    method', cls: 'key' }, { text: ': ', cls: 'plain' }, { text: "'POST'", cls: 'str' }, { text: ',', cls: 'plain' }],
   [{ text: '    headers', cls: 'key' }, { text: ': {', cls: 'plain' }],
@@ -324,7 +324,7 @@ const STEPS = [
     n: '03',
     icon: Bell,
     title: 'You get notified',
-    desc: 'Yalla Pay sends a signed webhook to your server the moment the payment is confirmed. Your balance updates instantly.',
+    desc: 'Wisopay sends a signed webhook to your server the moment the payment is confirmed. Your balance updates instantly.',
     detail: 'Real-time notification',
   },
   {
@@ -366,7 +366,7 @@ function HowItWorks() {
 // ─── Developers ──────────────────────────────────────────────────────────────
 
 const CODE = `// Create a payment — one API call
-const res = await fetch('https://pay.deliviosend.com/v1/payments', {
+const res = await fetch('https://pay.wisopay.com/v1/payments', {
   method: 'POST',
   headers: {
     'Authorization': 'Bearer dpay_live_...',
@@ -538,14 +538,14 @@ function CTA() {
           <div className="cta-glow" />
           <h2 className="cta-title">Ready to accept mobile money?</h2>
           <p className="cta-sub">
-            Join businesses across Tanzania collecting payments with Yalla Pay.
+            Join businesses across Tanzania collecting payments with Wisopay.
             Set up in minutes — no paperwork, no waiting.
           </p>
           <div className="cta-actions">
             <a href="/portal/" className="btn btn--primary btn--lg">
               Create your account <ArrowRight size={16} />
             </a>
-            <a href="mailto:pay@deliviosend.com" className="btn btn--ghost btn--lg">Talk to us</a>
+            <a href="mailto:pay@wisopay.com" className="btn btn--ghost btn--lg">Talk to us</a>
           </div>
         </div>
       </div>
@@ -590,8 +590,8 @@ function Footer() {
             </div>
             <div className="footer__col">
               <p className="footer__col-title">Company</p>
-              <a href="https://deliviosend.com">Deliviosend</a>
-              <a href="mailto:pay@deliviosend.com">Contact</a>
+              <a href="https://wisopay.com">Deliviosend</a>
+              <a href="mailto:pay@wisopay.com">Contact</a>
             </div>
           </div>
         </div>
@@ -653,7 +653,7 @@ const ENDPOINTS = [
 }`,
     response: `{
   "id": "lnk_xyz789",
-  "url": "https://pay.deliviosend.com/pay/lnk_xyz789",
+  "url": "https://pay.wisopay.com/pay/lnk_xyz789",
   "expires_at": "2024-01-15T11:00:00Z"
 }`,
   },
@@ -683,7 +683,7 @@ function DocsPage() {
             <span className="badge badge--green"><span className="badge__dot" />API Reference</span>
             <h1 className="docs-hero__title">Documentation</h1>
             <p className="docs-hero__sub">
-              Everything you need to integrate Yalla Pay into your application.
+              Everything you need to integrate Wisopay into your application.
               Bearer token auth, JSON in, JSON out.
             </p>
           </div>
@@ -715,7 +715,7 @@ function DocsPage() {
           <h2 className="docs-section__title">Base URL</h2>
           <div className="docs-codeblock">
             <div className="docs-codeblock__header"><span>Endpoint</span></div>
-            <pre className="docs-codeblock__pre"><code>https://pay.deliviosend.com/v1</code></pre>
+            <pre className="docs-codeblock__pre"><code>https://pay.wisopay.com/v1</code></pre>
           </div>
           <p className="docs-section__note">
             Use the <strong>Sandbox</strong> environment for testing — see the <Link to="/sandbox" className="docs-link">Sandbox page</Link> for credentials.
@@ -762,7 +762,7 @@ function DocsPage() {
         <section className="docs-section">
           <h2 className="docs-section__title">Webhooks</h2>
           <p className="docs-section__lead">
-            Yalla Pay sends a <code className="inline-code">POST</code> to your <code className="inline-code">callback_url</code> when a payment
+            Wisopay sends a <code className="inline-code">POST</code> to your <code className="inline-code">callback_url</code> when a payment
             status changes. Respond with HTTP 200 to acknowledge.
           </p>
           <div className="docs-codeblock">
@@ -841,12 +841,12 @@ function SandboxPage() {
           <div className="docs-codeblock">
             <div className="docs-codeblock__header">
               <span>Endpoint</span>
-              <button className="code-block__copy" onClick={() => copy('https://pay.deliviosend.com/v1', 'url')}>
+              <button className="code-block__copy" onClick={() => copy('https://pay.wisopay.com/v1', 'url')}>
                 {copied === 'url' ? <CheckCircle2 size={12} /> : null}
                 {copied === 'url' ? 'Copied' : 'Copy'}
               </button>
             </div>
-            <pre className="docs-codeblock__pre"><code>https://pay.deliviosend.com/v1</code></pre>
+            <pre className="docs-codeblock__pre"><code>https://pay.wisopay.com/v1</code></pre>
           </div>
           <p className="docs-section__note">
             The sandbox uses the same base URL — your sandbox API key determines which environment your requests hit.
@@ -896,14 +896,14 @@ function SandboxPage() {
             <div className="docs-codeblock__header">
               <span>curl</span>
               <button className="code-block__copy" onClick={() => copy(
-                `curl -X POST https://pay.deliviosend.com/v1/payments \\\n  -H "Authorization: Bearer YOUR_SANDBOX_KEY" \\\n  -H "Content-Type: application/json" \\\n  -d '{"amount_minor":10000,"currency":"TZS","payer":{"msisdn":"255712000001"}}'`,
+                `curl -X POST https://pay.wisopay.com/v1/payments \\\n  -H "Authorization: Bearer YOUR_SANDBOX_KEY" \\\n  -H "Content-Type: application/json" \\\n  -d '{"amount_minor":10000,"currency":"TZS","payer":{"msisdn":"255712000001"}}'`,
                 'curl'
               )}>
                 {copied === 'curl' ? <CheckCircle2 size={12} /> : null}
                 {copied === 'curl' ? 'Copied' : 'Copy'}
               </button>
             </div>
-            <pre className="docs-codeblock__pre"><code>{`curl -X POST https://pay.deliviosend.com/v1/payments \\
+            <pre className="docs-codeblock__pre"><code>{`curl -X POST https://pay.wisopay.com/v1/payments \\
   -H "Authorization: Bearer YOUR_SANDBOX_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{"amount_minor":10000,"currency":"TZS","payer":{"msisdn":"255712000001"}}'`}</code></pre>
