@@ -387,7 +387,7 @@ const payment = await res.json()
 // { id: 'pay_...', status: 'PROCESSING', ... }
 
 // Listen for completion via webhook
-app.post('/webhooks/delivio', (req, res) => {
+app.post('/webhooks/wisopay', (req, res) => {
   const { status, payment_id } = req.body
   if (status === 'COMPLETED') fulfillOrder(payment_id)
   res.sendStatus(200)
