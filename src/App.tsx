@@ -37,7 +37,7 @@ function Nav() {
         </Link>
 
         <div className={`nav__links ${open ? 'nav__links--open' : ''}`}>
-          {isHome && ['Features', 'How it works', 'Developers', 'Pricing'].map(l => (
+          {isHome && ['Developers'].map(l => (
             <a key={l} href={`#${l.toLowerCase().replace(/ /g, '-')}`} onClick={() => setOpen(false)}>{l}</a>
           ))}
           <Link to="/docs" onClick={() => setOpen(false)}>Docs</Link>
