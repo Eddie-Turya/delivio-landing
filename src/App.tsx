@@ -37,12 +37,15 @@ function Nav() {
         </Link>
 
         <div className={`nav__links ${open ? 'nav__links--open' : ''}`}>
-          {isHome && ['Developers'].map(l => (
-            <a key={l} href={`#${l.toLowerCase().replace(/ /g, '-')}`} onClick={() => setOpen(false)}>{l}</a>
-          ))}
+          {isHome && (
+            <a href="#developers" onClick={() => setOpen(false)}>Developers</a>
+          )}
           <Link to="/docs" onClick={() => setOpen(false)}>Docs</Link>
           <Link to="/sandbox" onClick={() => setOpen(false)}>Sandbox</Link>
           <Link to="/contact" onClick={() => setOpen(false)}>Contact</Link>
+        </div>
+
+        <div className="nav__actions">
           <a href="https://portal.wisopay.io" className="btn btn--outline btn--sm">Merchant login</a>
           <a href="https://portal.wisopay.io" className="btn btn--primary btn--sm">Get started</a>
         </div>
