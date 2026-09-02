@@ -66,12 +66,6 @@ function Hero() {
       <div className="hero__bg-grid" />
       <div className="container hero__layout">
         <div className="hero__content">
-        <div className="hero__eyebrow">
-          <span className="badge badge--green">
-            <span className="badge__dot" />
-            Live in Tanzania
-          </span>
-        </div>
         <h1 className="hero__title">
           Accept mobile money<br />
           <span className="hero__title-accent">in seconds.</span>
