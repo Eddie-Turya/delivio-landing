@@ -42,8 +42,8 @@ function Nav() {
           ))}
           <Link to="/docs" onClick={() => setOpen(false)}>Docs</Link>
           <Link to="/sandbox" onClick={() => setOpen(false)}>Sandbox</Link>
-          <a href="/portal/" className="btn btn--outline btn--sm">Merchant login</a>
-          <a href="/portal/" className="btn btn--primary btn--sm">Get started</a>
+          <a href="https://portal.wisopay.io" className="btn btn--outline btn--sm">Merchant login</a>
+          <a href="https://portal.wisopay.io" className="btn btn--primary btn--sm">Get started</a>
         </div>
 
         <button className="nav__burger" onClick={() => setOpen(o => !o)} aria-label="Menu">
@@ -77,7 +77,7 @@ function Hero() {
           mobile wallet — no app, no card, no friction.
         </p>
         <div className="hero__cta">
-          <a href="/portal/" className="btn btn--primary btn--lg">
+          <a href="https://portal.wisopay.io" className="btn btn--primary btn--lg">
             Start accepting payments <ArrowRight size={16} />
           </a>
           <a href="#how-it-works" className="btn btn--ghost btn--lg">See how it works</a>
@@ -427,7 +427,7 @@ function Developers() {
                 </li>
               ))}
             </ul>
-            <a href="/portal/" className="btn btn--primary btn--lg" style={{ marginTop: '2rem', display: 'inline-flex' }}>
+            <a href="https://portal.wisopay.io" className="btn btn--primary btn--lg" style={{ marginTop: '2rem', display: 'inline-flex' }}>
               Get your API key <ChevronRight size={16} />
             </a>
           </div>
@@ -515,7 +515,7 @@ function Pricing() {
                 ))}
               </ul>
               <a
-                href="/portal/"
+                href="https://portal.wisopay.io"
                 className={`btn btn--lg ${plan.highlight ? 'btn--primary' : 'btn--outline-dark'} pricing-card__cta`}
               >
                 {plan.cta}
@@ -542,7 +542,7 @@ function CTA() {
             Set up in minutes — no paperwork, no waiting.
           </p>
           <div className="cta-actions">
-            <a href="/portal/" className="btn btn--primary btn--lg">
+            <a href="https://portal.wisopay.io" className="btn btn--primary btn--lg">
               Create your account <ArrowRight size={16} />
             </a>
             <a href="mailto:pay@wisopay.com" className="btn btn--ghost btn--lg">Talk to us</a>
@@ -579,14 +579,14 @@ function Footer() {
               <a href="#features">Features</a>
               <a href="#how-it-works">How it works</a>
               <a href="#pricing">Pricing</a>
-              <a href="/portal/">Merchant Portal</a>
+              <a href="https://portal.wisopay.io">Merchant Portal</a>
             </div>
             <div className="footer__col">
               <p className="footer__col-title">Developers</p>
-              <a href="/portal/">API Keys</a>
+              <a href="https://portal.wisopay.io">API Keys</a>
               <a href="#developers">API Reference</a>
-              <a href="/portal/">Webhooks</a>
-              <a href="/portal/">Sandbox</a>
+              <a href="https://portal.wisopay.io">Webhooks</a>
+              <a href="https://portal.wisopay.io">Sandbox</a>
             </div>
             <div className="footer__col">
               <p className="footer__col-title">Company</p>
@@ -696,7 +696,7 @@ function DocsPage() {
           <h2 className="docs-section__title">Authentication</h2>
           <p className="docs-section__lead">
             All requests require a Bearer token in the <code className="inline-code">Authorization</code> header.
-            Retrieve your key from the <a href="/portal/" className="docs-link">merchant portal</a>.
+            Retrieve your key from the <a href="https://portal.wisopay.io" className="docs-link">merchant portal</a>.
           </p>
           <div className="docs-codeblock">
             <div className="docs-codeblock__header">
@@ -833,7 +833,7 @@ function SandboxPage() {
           <p className="docs-section__lead">
             Create a free merchant account and switch to <strong>Sandbox mode</strong> in the portal to get your sandbox API key.
           </p>
-          <a href="/portal/" className="btn btn--primary">Open merchant portal <ArrowRight size={15} /></a>
+          <a href="https://portal.wisopay.io" className="btn btn--primary">Open merchant portal <ArrowRight size={15} /></a>
         </section>
 
         <section className="docs-section">
