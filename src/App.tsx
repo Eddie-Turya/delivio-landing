@@ -113,7 +113,7 @@ type Token = { text: string; cls: string }
 
 const LINES: Token[][] = [
   [{ text: 'const', cls: 'kw' }, { text: ' res ', cls: 'plain' }, { text: '=', cls: 'op' }, { text: ' await ', cls: 'kw' }, { text: 'fetch', cls: 'fn' }, { text: '(', cls: 'plain' }],
-  [{ text: "  'https://wisopay.io/v1/payments'", cls: 'str' }, { text: ',', cls: 'plain' }],
+  [{ text: "  'https://api.wisopay.io/v1/payments'", cls: 'str' }, { text: ',', cls: 'plain' }],
   [{ text: '  {', cls: 'plain' }],
   [{ text: '    method', cls: 'key' }, { text: ': ', cls: 'plain' }, { text: "'POST'", cls: 'str' }, { text: ',', cls: 'plain' }],
   [{ text: '    headers', cls: 'key' }, { text: ': {', cls: 'plain' }],
@@ -366,7 +366,7 @@ function HowItWorks() {
 // ─── Developers ──────────────────────────────────────────────────────────────
 
 const CODE = `// Create a payment — one API call
-const res = await fetch('https://wisopay.io/v1/payments', {
+const res = await fetch('https://api.wisopay.io/v1/payments', {
   method: 'POST',
   headers: {
     'Authorization': 'Bearer dpay_live_...',
@@ -715,7 +715,7 @@ function DocsPage() {
           <h2 className="docs-section__title">Base URL</h2>
           <div className="docs-codeblock">
             <div className="docs-codeblock__header"><span>Endpoint</span></div>
-            <pre className="docs-codeblock__pre"><code>https://wisopay.io/v1</code></pre>
+            <pre className="docs-codeblock__pre"><code>https://api.wisopay.io/v1</code></pre>
           </div>
           <p className="docs-section__note">
             Use the <strong>Sandbox</strong> environment for testing — see the <Link to="/sandbox" className="docs-link">Sandbox page</Link> for credentials.
@@ -841,12 +841,12 @@ function SandboxPage() {
           <div className="docs-codeblock">
             <div className="docs-codeblock__header">
               <span>Endpoint</span>
-              <button className="code-block__copy" onClick={() => copy('https://wisopay.io/v1', 'url')}>
+              <button className="code-block__copy" onClick={() => copy('https://api.wisopay.io/v1', 'url')}>
                 {copied === 'url' ? <CheckCircle2 size={12} /> : null}
                 {copied === 'url' ? 'Copied' : 'Copy'}
               </button>
             </div>
-            <pre className="docs-codeblock__pre"><code>https://wisopay.io/v1</code></pre>
+            <pre className="docs-codeblock__pre"><code>https://api.wisopay.io/v1</code></pre>
           </div>
           <p className="docs-section__note">
             The sandbox uses the same base URL — your sandbox API key determines which environment your requests hit.
@@ -896,14 +896,14 @@ function SandboxPage() {
             <div className="docs-codeblock__header">
               <span>curl</span>
               <button className="code-block__copy" onClick={() => copy(
-                `curl -X POST https://wisopay.io/v1/payments \\\n  -H "Authorization: Bearer YOUR_SANDBOX_KEY" \\\n  -H "Content-Type: application/json" \\\n  -d '{"amount_minor":10000,"currency":"TZS","payer":{"msisdn":"255712000001"}}'`,
+                `curl -X POST https://api.wisopay.io/v1/payments \\\n  -H "Authorization: Bearer YOUR_SANDBOX_KEY" \\\n  -H "Content-Type: application/json" \\\n  -d '{"amount_minor":10000,"currency":"TZS","payer":{"msisdn":"255712000001"}}'`,
                 'curl'
               )}>
                 {copied === 'curl' ? <CheckCircle2 size={12} /> : null}
                 {copied === 'curl' ? 'Copied' : 'Copy'}
               </button>
             </div>
-            <pre className="docs-codeblock__pre"><code>{`curl -X POST https://wisopay.io/v1/payments \\
+            <pre className="docs-codeblock__pre"><code>{`curl -X POST https://api.wisopay.io/v1/payments \\
   -H "Authorization: Bearer YOUR_SANDBOX_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{"amount_minor":10000,"currency":"TZS","payer":{"msisdn":"255712000001"}}'`}</code></pre>
