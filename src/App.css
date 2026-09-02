@@ -1441,3 +1441,117 @@
 .contact-success__icon { color: var(--emerald); }
 .contact-success__title { font-size: 22px; font-weight: 700; color: var(--text); margin: 0; }
 .contact-success__sub { font-size: 15px; color: var(--text-2); max-width: 380px; line-height: 1.6; margin: 0 0 8px; }
+
+/* ─── Comprehensive Responsive Overrides ─────────────────────────────────── */
+
+/* Tablet — 900px and below */
+@media (max-width: 900px) {
+  .section { padding: 80px 0; }
+  .section__head { margin-bottom: 52px; }
+  .cta-section { padding: 80px 0; }
+  .docs-hero { padding: 100px 0 48px; }
+}
+
+/* Large mobile / small tablet — 768px and below */
+@media (max-width: 768px) {
+  /* Container */
+  .container { padding: 0 16px; }
+
+  /* Hero */
+  .hero { padding: 88px 0 60px; min-height: auto; }
+  .hero__layout { gap: 40px; }
+  .hero__title { font-size: clamp(32px, 8vw, 48px); }
+  .hero__sub { font-size: 16px; margin-bottom: 28px; }
+  .hero__cta { gap: 10px; }
+  .hero__cta .btn--lg { padding: 12px 20px; font-size: 14px; }
+  .hero__networks { gap: 12px; margin-bottom: 40px; }
+  .hero__visual { margin-top: 32px; }
+
+  /* Code card — shrink to fit */
+  .code-card { width: 100%; max-width: 100%; }
+
+  /* Sections */
+  .section { padding: 64px 0; }
+  .section__head { margin-bottom: 40px; }
+
+  /* Feature cards */
+  .feature-card { padding: 24px; }
+
+  /* Steps */
+  .step { padding-right: 0; }
+
+  /* Dev section */
+  .code-block__pre { font-size: 11.5px; overflow-x: auto; }
+
+  /* Pricing card */
+  .pricing-card { padding: 28px 24px; }
+
+  /* CTA */
+  .cta-section { padding: 64px 0; }
+  .cta-actions { flex-direction: column; align-items: stretch; }
+  .cta-actions .btn { justify-content: center; }
+
+  /* Footer */
+  .footer { padding: 48px 0 24px; }
+  .footer__inner { margin-bottom: 32px; }
+
+  /* Docs */
+  .docs-hero { padding: 88px 0 40px; }
+  .docs-hero__title { font-size: clamp(28px, 7vw, 44px); }
+  .docs-hero__sub { font-size: 15px; }
+  .docs-body { padding: 40px 0 64px; }
+  .docs-section { padding-bottom: 40px; margin-bottom: 40px; }
+  .docs-endpoint { padding: 18px; }
+  .docs-status { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .docs-status__badge { min-width: auto; }
+
+  /* Contact */
+  .contact-body { padding: 40px 0 64px; }
+  .contact-form-wrap { padding: 24px; }
+  .contact-channels { padding: 20px; }
+}
+
+/* Small mobile — 480px and below */
+@media (max-width: 480px) {
+  /* Nav */
+  .nav__inner { gap: 16px; }
+
+  /* Hero */
+  .hero { padding: 80px 0 48px; }
+  .hero__networks { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .hero__network-list { flex-wrap: wrap; gap: 8px; }
+  .network-chip { padding: 4px 10px; }
+  .network-chip__logo { height: 36px; }
+  .network-chip__logo--lg { transform: scale(1.3); }
+
+  /* Sections */
+  .section { padding: 48px 0; }
+  .section__head { margin-bottom: 32px; }
+  .section__title { font-size: clamp(24px, 7vw, 32px); }
+
+  /* Feature cards */
+  .feature-card { padding: 20px; }
+  .feature-card__icon { width: 40px; height: 40px; margin-bottom: 14px; }
+
+  /* Pricing */
+  .pricing-card { padding: 24px 20px; }
+
+  /* CTA */
+  .cta-section { padding: 48px 0; }
+  .cta-title { font-size: clamp(24px, 7vw, 32px); }
+  .cta-sub { font-size: 15px; }
+
+  /* Footer */
+  .footer__bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
+
+  /* Docs */
+  .docs-hero { padding: 80px 0 36px; }
+  .docs-codeblock__pre { font-size: 11px; }
+  .docs-endpoint { padding: 14px; }
+  .docs-endpoint__head { flex-wrap: wrap; gap: 8px; }
+
+  /* Contact */
+  .contact-form-wrap { padding: 20px 16px; }
+  .contact-channels { padding: 18px 16px; }
+  .contact-form__submit { width: 100%; justify-content: center; }
+}
