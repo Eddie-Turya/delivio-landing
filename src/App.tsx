@@ -661,6 +661,24 @@ const ENDPOINTS = [
 }`,
   },
   {
+    method: 'POST',
+    path: '/v1/payments/pesa-push',
+    desc: 'Send an in-app push notification to the customer\'s Selcom Pesa app. Faster than USSD — no prompt, native approval dialog.',
+    body: `{
+  "amount_minor": 25000,
+  "currency": "TZS",
+  "phone_number": "255712345678",
+  "merchant_reference": "order_002",
+  "description": "Invoice #1042"
+}`,
+    response: `{
+  "id": "pay_def456",
+  "status": "PENDING",
+  "amount_minor": 25000,
+  "currency": "TZS"
+}`,
+  },
+  {
     method: 'GET',
     path: '/v1/payments/:id',
     desc: 'Retrieve a payment by ID. Poll this to check status.',
