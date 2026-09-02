@@ -24,37 +24,71 @@ function Nav() {
   useEffect(() => { setOpen(false) }, [location.pathname])
 
   return (
-    <nav className={`nav ${scrolled || !isHome ? 'nav--scrolled' : ''}`}>
-      <div className="nav__inner">
-        <Link to="/" className="nav__logo">
-          <div className="nav__logo-mark">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <circle cx="10" cy="10" r="9" stroke="#10B981" strokeWidth="1.8"/>
-              <path d="M10 6.5v4l2.5 2.5" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round"/>
-            </svg>
-          </div>
-          <span>Wisopay</span>
-        </Link>
+    <>
+      <nav className={`nav ${scrolled || !isHome ? 'nav--scrolled' : ''}`}>
+        <div className="nav__inner">
+          <Link to="/" className="nav__logo">
+            <div className="nav__logo-mark">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <circle cx="10" cy="10" r="9" stroke="#10B981" strokeWidth="1.8"/>
+                <path d="M10 6.5v4l2.5 2.5" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round"/>
+              </svg>
+            </div>
+            <span>Wisopay</span>
+          </Link>
 
-        <div className={`nav__links ${open ? 'nav__links--open' : ''}`}>
+          <div className="nav__links">
+            {isHome && (
+              <a href="#developers">Developers</a>
+            )}
+            <Link to="/docs">Docs</Link>
+            <Link to="/sandbox">Sandbox</Link>
+            <Link to="/contact">Contact</Link>
+          </div>
+
+          <div className="nav__actions">
+            <a href="https://portal.wisopay.io" className="btn btn--outline btn--sm">Merchant login</a>
+            <a href="https://portal.wisopay.io" className="btn btn--primary btn--sm">Get started</a>
+          </div>
+
+          <button className="nav__burger" onClick={() => setOpen(o => !o)} aria-label="Menu">
+            <Menu size={20} />
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile menu rendered outside <nav> to avoid backdrop-filter containing-block trap */}
+      <div className={`mobile-menu ${open ? 'mobile-menu--open' : ''}`} aria-hidden={!open}>
+        <div className="mobile-menu__top">
+          <Link to="/" className="nav__logo" onClick={() => setOpen(false)}>
+            <div className="nav__logo-mark">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <circle cx="10" cy="10" r="9" stroke="#10B981" strokeWidth="1.8"/>
+                <path d="M10 6.5v4l2.5 2.5" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round"/>
+              </svg>
+            </div>
+            <span>Wisopay</span>
+          </Link>
+          <button className="mobile-menu__close" onClick={() => setOpen(false)} aria-label="Close menu">
+            <X size={22} />
+          </button>
+        </div>
+
+        <nav className="mobile-menu__links">
           {isHome && (
             <a href="#developers" onClick={() => setOpen(false)}>Developers</a>
           )}
           <Link to="/docs" onClick={() => setOpen(false)}>Docs</Link>
           <Link to="/sandbox" onClick={() => setOpen(false)}>Sandbox</Link>
           <Link to="/contact" onClick={() => setOpen(false)}>Contact</Link>
-        </div>
+        </nav>
 
-        <div className="nav__actions">
-          <a href="https://portal.wisopay.io" className="btn btn--outline btn--sm">Merchant login</a>
-          <a href="https://portal.wisopay.io" className="btn btn--primary btn--sm">Get started</a>
+        <div className="mobile-menu__cta">
+          <a href="https://portal.wisopay.io" className="btn btn--outline btn--lg mobile-menu__btn">Merchant login</a>
+          <a href="https://portal.wisopay.io" className="btn btn--primary btn--lg mobile-menu__btn">Get started</a>
         </div>
-
-        <button className="nav__burger" onClick={() => setOpen(o => !o)} aria-label="Menu">
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
       </div>
-    </nav>
+    </>
   )
 }
 
