@@ -33,7 +33,7 @@ function Nav() {
               <path d="M10 6.5v4l2.5 2.5" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round"/>
             </svg>
           </div>
-          <span>Delivio <strong>Pay</strong></span>
+          <span>Wisopay</span>
         </Link>
 
         <div className={`nav__links ${open ? 'nav__links--open' : ''}`}>
@@ -568,7 +568,7 @@ function Footer() {
                   <path d="M10 6.5v4l2.5 2.5" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round"/>
                 </svg>
               </div>
-              <span style={{ color: '#fff' }}>Delivio <strong>Pay</strong></span>
+              <span style={{ color: '#fff' }}>Wisopay</span>
             </div>
             <p className="footer__tagline">Mobile money payments for Tanzania.</p>
           </div>
@@ -590,13 +590,13 @@ function Footer() {
             </div>
             <div className="footer__col">
               <p className="footer__col-title">Company</p>
-              <a href="https://wisopay.com">Deliviosend</a>
+              <a href="https://wisopay.com">Wisopay</a>
               <a href="mailto:pay@wisopay.com">Contact</a>
             </div>
           </div>
         </div>
         <div className="footer__bottom">
-          <p>© {new Date().getFullYear()} Deliviosend. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Wisopay. All rights reserved.</p>
           <div className="footer__bottom-links">
             <a href="#">Privacy</a>
             <a href="#">Terms</a>
