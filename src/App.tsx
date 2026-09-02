@@ -3,7 +3,7 @@ import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import {
   Smartphone, Link2, Zap, LayoutDashboard, Code2, ShieldCheck,
   ArrowRight, Check, ChevronRight, Menu, X, Globe, Bell,
-  CheckCircle2, ExternalLink
+  CheckCircle2, ExternalLink, Mail, MessageSquare, Building2, Send
 } from 'lucide-react'
 import './App.css'
 
@@ -42,6 +42,7 @@ function Nav() {
           ))}
           <Link to="/docs" onClick={() => setOpen(false)}>Docs</Link>
           <Link to="/sandbox" onClick={() => setOpen(false)}>Sandbox</Link>
+          <Link to="/contact" onClick={() => setOpen(false)}>Contact</Link>
           <a href="https://portal.wisopay.io" className="btn btn--outline btn--sm">Merchant login</a>
           <a href="https://portal.wisopay.io" className="btn btn--primary btn--sm">Get started</a>
         </div>
@@ -591,7 +592,7 @@ function Footer() {
             <div className="footer__col">
               <p className="footer__col-title">Company</p>
               <a href="https://wisopay.com">Wisopay</a>
-              <a href="mailto:pay@wisopay.com">Contact</a>
+              <Link to="/contact">Contact</Link>
             </div>
           </div>
         </div>
@@ -937,6 +938,204 @@ function SandboxPage() {
   )
 }
 
+// ─── Contact Page ────────────────────────────────────────────────────────────
+
+const SUBJECTS = [
+  { value: 'sales',        label: 'Sales & pricing' },
+  { value: 'technical',    label: 'Technical support' },
+  { value: 'integration',  label: 'Integration help' },
+  { value: 'partnership',  label: 'Partnership' },
+  { value: 'general',      label: 'General inquiry' },
+]
+
+function ContactPage() {
+  const [form, setForm] = useState({ name: '', email: '', company: '', subject: 'general', message: '' })
+  const [sent, setSent] = useState(false)
+  const [errors, setErrors] = useState<Record<string, string>>({})
+
+  function validate() {
+    const e: Record<string, string> = {}
+    if (!form.name.trim())    e.name    = 'Name is required'
+    if (!form.email.trim())   e.email   = 'Email is required'
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Enter a valid email'
+    if (!form.message.trim()) e.message = 'Message is required'
+    return e
+  }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    const errs = validate()
+    if (Object.keys(errs).length) { setErrors(errs); return }
+    const subjectLabel = SUBJECTS.find(s => s.value === form.subject)?.label || form.subject
+    const mailSubject  = encodeURIComponent(`[Wisopay] ${subjectLabel} — ${form.name}`)
+    const mailBody     = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}${form.company ? `\nCompany: ${form.company}` : ''}\nTopic: ${subjectLabel}\n\n${form.message}`
+    )
+    window.location.href = `mailto:support@wisopay.io?subject=${mailSubject}&body=${mailBody}`
+    setSent(true)
+  }
+
+  function field(key: keyof typeof form, val: string) {
+    setForm(f => ({ ...f, [key]: val }))
+    if (errors[key]) setErrors(e => { const n = { ...e }; delete n[key]; return n })
+  }
+
+  return (
+    <div className="docs-page">
+      <div className="docs-hero docs-hero--contact">
+        <div className="container">
+          <div className="docs-hero__inner">
+            <span className="badge badge--green"><span className="badge__dot" />Get in touch</span>
+            <h1 className="docs-hero__title">Contact us</h1>
+            <p className="docs-hero__sub">
+              Have a question about integrating Wisopay, pricing, or partnerships?
+              We'd love to hear from you.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="container contact-body">
+        <div className="contact-layout">
+
+          {/* Left — channels */}
+          <aside className="contact-channels">
+            <h2 className="contact-channels__title">Other ways to reach us</h2>
+
+            <div className="contact-channel">
+              <div className="contact-channel__icon contact-channel__icon--emerald">
+                <Mail size={18} />
+              </div>
+              <div>
+                <p className="contact-channel__label">Email</p>
+                <a href="mailto:support@wisopay.io" className="contact-channel__value">support@wisopay.io</a>
+              </div>
+            </div>
+
+            <div className="contact-channel">
+              <div className="contact-channel__icon contact-channel__icon--blue">
+                <MessageSquare size={18} />
+              </div>
+              <div>
+                <p className="contact-channel__label">Sales</p>
+                <a href="mailto:sales@wisopay.io" className="contact-channel__value">sales@wisopay.io</a>
+              </div>
+            </div>
+
+            <div className="contact-channel">
+              <div className="contact-channel__icon contact-channel__icon--violet">
+                <Building2 size={18} />
+              </div>
+              <div>
+                <p className="contact-channel__label">Partnerships</p>
+                <a href="mailto:partners@wisopay.io" className="contact-channel__value">partners@wisopay.io</a>
+              </div>
+            </div>
+
+            <div className="contact-faq">
+              <p className="contact-faq__head">Looking for docs?</p>
+              <p className="contact-faq__sub">Check out the API reference and sandbox for technical questions.</p>
+              <div className="contact-faq__links">
+                <Link to="/docs" className="btn btn--outline-dark btn--sm">API docs</Link>
+                <Link to="/sandbox" className="btn btn--outline-dark btn--sm">Sandbox</Link>
+              </div>
+            </div>
+          </aside>
+
+          {/* Right — form */}
+          <div className="contact-form-wrap">
+            {sent ? (
+              <div className="contact-success">
+                <div className="contact-success__icon">
+                  <CheckCircle2 size={32} />
+                </div>
+                <h3 className="contact-success__title">Message composed!</h3>
+                <p className="contact-success__sub">
+                  Your mail client opened with the message pre-filled. We'll get back to you within one business day.
+                </p>
+                <button className="btn btn--outline-dark btn--sm" onClick={() => { setSent(false); setForm({ name: '', email: '', company: '', subject: 'general', message: '' }) }}>
+                  Send another message
+                </button>
+              </div>
+            ) : (
+              <form className="contact-form" onSubmit={handleSubmit} noValidate>
+                <div className="contact-form__row">
+                  <div className="contact-form__field">
+                    <label className="contact-form__label" htmlFor="cf-name">Full name <span className="contact-form__req">*</span></label>
+                    <input
+                      id="cf-name"
+                      className={`contact-form__input ${errors.name ? 'contact-form__input--err' : ''}`}
+                      type="text"
+                      placeholder="Jane Doe"
+                      value={form.name}
+                      onChange={e => field('name', e.target.value)}
+                    />
+                    {errors.name && <span className="contact-form__error">{errors.name}</span>}
+                  </div>
+                  <div className="contact-form__field">
+                    <label className="contact-form__label" htmlFor="cf-email">Email <span className="contact-form__req">*</span></label>
+                    <input
+                      id="cf-email"
+                      className={`contact-form__input ${errors.email ? 'contact-form__input--err' : ''}`}
+                      type="email"
+                      placeholder="jane@company.com"
+                      value={form.email}
+                      onChange={e => field('email', e.target.value)}
+                    />
+                    {errors.email && <span className="contact-form__error">{errors.email}</span>}
+                  </div>
+                </div>
+
+                <div className="contact-form__row">
+                  <div className="contact-form__field">
+                    <label className="contact-form__label" htmlFor="cf-company">Company <span className="contact-form__opt">(optional)</span></label>
+                    <input
+                      id="cf-company"
+                      className="contact-form__input"
+                      type="text"
+                      placeholder="Acme Corp"
+                      value={form.company}
+                      onChange={e => field('company', e.target.value)}
+                    />
+                  </div>
+                  <div className="contact-form__field">
+                    <label className="contact-form__label" htmlFor="cf-subject">Topic</label>
+                    <select
+                      id="cf-subject"
+                      className="contact-form__input contact-form__select"
+                      value={form.subject}
+                      onChange={e => field('subject', e.target.value)}
+                    >
+                      {SUBJECTS.map(s => <option key={s.value} value={s.value}>{s.label}</option>)}
+                    </select>
+                  </div>
+                </div>
+
+                <div className="contact-form__field">
+                  <label className="contact-form__label" htmlFor="cf-message">Message <span className="contact-form__req">*</span></label>
+                  <textarea
+                    id="cf-message"
+                    className={`contact-form__input contact-form__textarea ${errors.message ? 'contact-form__input--err' : ''}`}
+                    placeholder="Tell us how we can help…"
+                    rows={5}
+                    value={form.message}
+                    onChange={e => field('message', e.target.value)}
+                  />
+                  {errors.message && <span className="contact-form__error">{errors.message}</span>}
+                </div>
+
+                <button type="submit" className="btn btn--primary btn--lg contact-form__submit">
+                  Send message <Send size={15} />
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 // ─── Home ────────────────────────────────────────────────────────────────────
 
 function Home() {
@@ -985,6 +1184,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/docs" element={<DocsPage />} />
         <Route path="/sandbox" element={<SandboxPage />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
       <Footer />
     </>
