@@ -28,12 +28,7 @@ function Nav() {
       <nav className={`nav ${scrolled || !isHome ? 'nav--scrolled' : ''}`}>
         <div className="nav__inner">
           <Link to="/" className="nav__logo">
-            <div className="nav__logo-mark">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <circle cx="10" cy="10" r="9" stroke="#10B981" strokeWidth="1.8"/>
-                <path d="M10 6.5v4l2.5 2.5" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round"/>
-              </svg>
-            </div>
+            <img src="/logo.png" alt="Wisopay" style={{ height: '32px', width: 'auto' }} />
             <span>Wisopay</span>
           </Link>
 
@@ -61,12 +56,7 @@ function Nav() {
       <div className={`mobile-menu ${open ? 'mobile-menu--open' : ''}`} aria-hidden={!open}>
         <div className="mobile-menu__top">
           <Link to="/" className="nav__logo" onClick={() => setOpen(false)}>
-            <div className="nav__logo-mark">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <circle cx="10" cy="10" r="9" stroke="#10B981" strokeWidth="1.8"/>
-                <path d="M10 6.5v4l2.5 2.5" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round"/>
-              </svg>
-            </div>
+            <img src="/logo.png" alt="Wisopay" style={{ height: '32px', width: 'auto' }} />
             <span>Wisopay</span>
           </Link>
           <button className="mobile-menu__close" onClick={() => setOpen(false)} aria-label="Close menu">
